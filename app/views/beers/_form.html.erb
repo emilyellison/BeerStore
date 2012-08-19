@@ -1,0 +1,16 @@
+<% if @beer.errors.any? %>
+	<p>Yikes! Something went wrong...</p>
+	<ul>
+	<% @beer.errors.full_messages.each do |msg| %>
+		<li><%= msg %>.</li>
+	<% end %>
+	</ul>
+<% end %>
+
+<%= form_for @beer do |f| %>
+	<%= f.label :name %>
+	<%= f.text_field :name %>
+	<%= f.label :price %>
+	<%= f.number_field :price %>
+	<%= f.submit %>
+<% end %>
