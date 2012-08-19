@@ -1,0 +1,5 @@
+<% [ 'success', 'notice', 'error'].each do |type| %>
+	<% if flash[type.to_sym] %>
+		<p class='alert alert-<%= type %>'><%= flash[type.to_sym] %></p>
+	<% end %>
+<% end %>
