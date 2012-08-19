@@ -1,3 +1,11 @@
 <h1><%= @user.name %></h1>
 
 <p>Email: <%= mail_to @user.email, @user.email, subject: 'Hi' %></p>
+
+<h2>Beers</h2>
+
+<ul>
+<% @user.beers.each do |beer| %>
+	<li><%= beer.name %>: <%= number_to_currency(beer.price) %></li>
+<% end %>
+</ul>

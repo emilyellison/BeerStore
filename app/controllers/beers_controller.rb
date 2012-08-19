@@ -10,6 +10,7 @@ class BeersController < ApplicationController
   
   def create
     @beer = Beer.new(params[:beer])
+    @beer.user_id = session[:user_id]
     if @beer.save
       flash[:success] = 'Congrats! Your beer has been added.'
       redirect_to beer_url(@beer)
