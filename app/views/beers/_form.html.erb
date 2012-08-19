@@ -1,11 +1,4 @@
-<% if @beer.errors.any? %>
-	<p>Yikes! Something went wrong...</p>
-	<ul>
-	<% @beer.errors.full_messages.each do |msg| %>
-		<li><%= msg %>.</li>
-	<% end %>
-	</ul>
-<% end %>
+<%= render 'shared/error_messages', item: @beer %>
 
 <%= form_for @beer do |f| %>
 	<%= f.label :name %>
