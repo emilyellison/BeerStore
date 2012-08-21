@@ -15,7 +15,9 @@ puts 'Database ready for seed data.'
 
 puts 'Creating users...'
 
-emily = User.create(:name => 'Emily Ellison', email: 'emilyellison986@gmail.com', password: 'foobar', password_confirmation: 'foobar')
+emily = User.new(:name => 'Emily Ellison', email: 'emilyellison986@gmail.com', password: 'foobar', password_confirmation: 'foobar')
+emily.admin = true
+emily.save
 
 neo = User.create(:name => 'Nehemiah Ellison', email: 'nehemiah.ellison@gmail.com', password: 'foobar', password_confirmation: 'foobar')
 
