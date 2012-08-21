@@ -1,5 +1,9 @@
 class BeersController < ApplicationController
   
+  before_filter only: [ :edit, :update, :destroy ] do |action|
+    action.redirect_if_not_authorized(Beer.find(params[:id]).user_id)
+  end
+
   def index
     @beers = Beer.all
   end

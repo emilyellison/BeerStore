@@ -1,5 +1,9 @@
 class CartItemsController < ApplicationController
   
+  before_filter only: [ :destroy ] do |action|
+    action.redirect_if_not_authorized(CartItem.find(params[:id]).cart.user_id)
+  end
+  
   def create
     @beer = Beer.find(params[:beer_id])
     @cart_item = CartItem.new(beer_id: @beer.id, quantity: 1)
