@@ -2,9 +2,12 @@
 	<% beers.each do |beer| %>
 		<li>
 			<%= link_to beer.name, beer_url(beer) %>: <%= number_to_currency(beer.price) %>
-			| <%= link_to 'Edit', edit_beer_url(beer) %>
-			| <%= link_to 'Destroy', beer_url(beer), method: :delete, confirm: 'Are you sure you would like to delete this beer?' %>
-			| <%= link_to 'Add to Cart', cart_items_url(beer_id: beer.id), method: :post %>
+			<% if authorized_to_change(beer.user_id) %>
+				| <%= link_to 'Edit', edit_beer_url(beer) %>
+				| <%= link_to 'Destroy', beer_url(beer), method: :delete, confirm: 'Are you sure you would like to delete this beer?' %>
+			<% else %>
+				| <%= link_to 'Add to Cart', cart_items_url(beer_id: beer.id), method: :post %>
+			<% end %>
 		</li>
 	<% end %>
 </ul>
