@@ -1,13 +1,6 @@
 <% if @current_user.present? && @current_user.cart_items.present? %>
 	<h1>My Cart</h1>
-	<ul>
-	<% @current_user.cart.cart_items.each do |cart_item| %>
-		<li>
-			<%= cart_item.beer.name %>: <%= number_to_currency(cart_item.beer.price) %>
-			| <%= link_to 'Remove from Cart', cart_item_url(cart_item), method: :delete, confirm: "Are you sure you want to remove #{cart_item.beer.name} from your cart?" %>
-		</li>
-	<% end %>
-	</ul>
+	<%= render 'carts/cart', user: @current_user %>
 <% end %>
 
 <h1>Beers for Sale</h1>
