@@ -6,3 +6,5 @@
 	</li>
 <% end %>
 </ul>
+<br/>
+<p>Total: <%= number_to_currency(user.cart.total_price(user.cart.id)) %></p>

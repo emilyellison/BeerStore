@@ -4,4 +4,11 @@ class Cart < ActiveRecord::Base
   belongs_to :user
   has_many :cart_items
   
+  def total_price(cart_id)
+    cart_items = CartItem.find_all_by_cart_id(cart_id)
+    beer_prices = cart_items.collect { |cart_item| cart_item.beer.price }
+    beer_total = beer_prices.sum
+    total_price = beer_total * 1.1
+  end
+  
 end
