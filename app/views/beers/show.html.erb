@@ -1,3 +1,8 @@
-<h1><%= @beer.name %> | <%= link_to 'Edit', edit_beer_url(@beer) %></h1>
+<h1>
+	<%= @beer.name %>
+	<% if authorized_to_change(@beer.user_id) %>
+	  | <%= link_to 'Edit', edit_beer_url(@beer) %>
+	<% end %>
+</h1>
 
 <p>Price: <%= number_to_currency(@beer.price) %></p>
