@@ -19,4 +19,8 @@ class ApplicationController < ActionController::Base
       redirect_to :back
     end
   end
+  
+  def current_cart
+    @current_cart ||= Cart.find_by_user_id(session[:user_id])
+  end
 end
