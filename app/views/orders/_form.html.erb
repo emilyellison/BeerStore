@@ -6,12 +6,12 @@
 	<%= f.label :last_name %>
 	<%= f.text_field :last_name %>
 	<%= f.label :card_type %>
-	<%= f.text_field :card_type %>
+	<%= f.select :card_type, [["Visa", "visa"], ["MasterCard", "master"], ["Discover", "discover"], ["American Express", "american_express"]] %>
 	<%= f.label :card_number %>
 	<%= f.text_field :card_number %>
 	<%= f.label :card_verification %>
 	<%= f.text_field :card_verification %>
 	<%= f.label :card_expires_on %>
-	<%= f.text_field :card_expires_on %>
+	<%= f.date_select :card_expires_on, :discard_day => true, :start_year => Date.today.year, :end_year => (Date.today.year+10), :add_month_numbers => true %>
 	<%= f.submit 'Place Order' %>
 <% end %>
