@@ -34,4 +34,13 @@ BeerStore::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+  
+  config.after_initialize do
+    ActiveMerchant::Billing::Base.mode = :test
+    ::GATEWAY = ActiveMerchant::Billing::PaypalGateway.new(
+      :login => "seller_1345655245_biz_api1.gmail.com",
+      :password => "1345655270",
+      :signature => "AhhST6oau.XtqJk4FVmt9d2fcSCUAQVlB.B.CMrOr1XIpwCAy6wnUs4C"
+    )
+  end
 end
