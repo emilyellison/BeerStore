@@ -1,0 +1,17 @@
+<%= render 'shared/error_messages', item: @order %>
+
+<%= form_for @order do |f| %>
+	<%= f.label :first_name %>
+	<%= f.text_field :first_name %>
+	<%= f.label :last_name %>
+	<%= f.text_field :last_name %>
+	<%= f.label :card_type %>
+	<%= f.text_field :card_type %>
+	<%= f.label :card_number %>
+	<%= f.text_field :card_number %>
+	<%= f.label :card_verification %>
+	<%= f.text_field :card_verification %>
+	<%= f.label :card_expires_on %>
+	<%= f.text_field :card_expires_on %>
+	<%= f.submit 'Place Order' %>
+<% end %>

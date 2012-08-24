@@ -5,6 +5,7 @@ BeerStore::Application.routes.draw do
   resources :beers
   resources :users, only: [ :new, :create, :show ]
   resources :cart_items, only: [ :create, :destroy ]
+  resources :orders, only: [ :new, :create ]
   
   get '/sign_in' => 'sessions#new', as: :sign_in
   post '/sign_in' => 'sessions#create'
