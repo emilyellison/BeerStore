@@ -5,11 +5,7 @@ class OrdersController < ApplicationController
   end
   
   def create
-    @order = Order.new
-    @order.first_name = params[:order][:first_name]
-    @order.last_name = params[:order][:last_name]
-    @order.card_type = params[:order][:card_type]
-    @order.card_expires_on = params[:order][:card_expires_on]
+    @order = Order.new(params[:order])
     @order.cart_id = current_cart.id
     @order.ip_address = request.remote_ip
     if @order.save
