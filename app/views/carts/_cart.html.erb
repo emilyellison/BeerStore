@@ -8,3 +8,4 @@
 </ul>
 <br/>
 <p>Total: <%= number_to_currency(user.cart.total_price(user.cart.id)) %></p>
+<p><%= link_to 'Checkout', new_order_url %></p>
