@@ -2,12 +2,13 @@ class Order < ActiveRecord::Base
   attr_accessible :card_expires_on, :card_type, :cart_id, :first_name, :ip_address, :last_name, :card_number, :card_verification
   attr_accessor :card_number, :card_verification
   belongs_to :cart
-  has_many :transactions, class: 'OrderTransaction'
+  has_many :transactions, class_name: 'OrderTransaction'
   
   before_validation :validate_card, :on => :create
   
   def purchase
     response = GATEWAY.purchase(price_in_cents, credit_card, purchase_options)
+    transactions.create!(:action => "purchase", :amount => price_in_cents, :response => response)
     cart.update_attribute(:purchased_at, Time.now) if response.success?
     response.success?
   end
