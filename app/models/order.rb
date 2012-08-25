@@ -2,7 +2,7 @@ class Order < ActiveRecord::Base
   attr_accessible :card_expires_on, :card_type, :cart_id, :first_name, :ip_address, :last_name, :card_number, :card_verification
   attr_accessor :card_number, :card_verification
   belongs_to :cart
-  has_one :order_transaction
+  has_many :transactions, class: 'OrderTransaction'
   
   before_validation :validate_card, :on => :create
   
