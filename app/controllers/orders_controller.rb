@@ -9,8 +9,11 @@ class OrdersController < ApplicationController
     @order.cart_id = current_cart.id
     @order.ip_address = request.remote_ip
     if @order.save
-      flash[:success] = 'Your order has been placed.'
-      redirect_to user_url(@current_user)
+      if @order.purchase
+        render :success
+      else
+        render :failure
+      end
     else
       render :new
     end
