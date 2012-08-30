@@ -37,6 +37,7 @@ BeerStore::Application.configure do
   
   config.after_initialize do
     ActiveMerchant::Billing::Base.mode = :test
-    ::GATEWAY = ActiveMerchant::Billing::BogusGateway.new
+    ::STANDARD_GATEWAY = ActiveMerchant::Billing::BogusGateway.new
+    ::EXPRESS_GATEWAY = ActiveMerchant::Billing::BogusGateway.new
   end
 end
