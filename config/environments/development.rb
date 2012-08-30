@@ -37,10 +37,13 @@ BeerStore::Application.configure do
   
   config.after_initialize do
     ActiveMerchant::Billing::Base.mode = :test
-    ::GATEWAY = ActiveMerchant::Billing::PaypalGateway.new(
+    paypal_options = {
       :login => "sellpr_1346345964_biz_api1.gmail.com",
       :password => "1346346025",
       :signature => "A5cCHIWIrfyfXTHLDjUlLmUW.-YWADmqkorz2xBWJNM4V25dQiI55k90"
-    )
+    }
+    ::STANDARD_GATEWAY = ActiveMerchant::Billing::PaypalGateway.new(paypal_options)
+    ::EXPRESS_GATEWAY = ActiveMerchant::Billing::PaypalExpressGateway.new(paypal_options)
   end
+  
 end
