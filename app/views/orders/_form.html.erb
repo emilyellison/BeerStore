@@ -15,6 +15,8 @@
 		<%= f.label :card_expires_on %>
 		<%= f.date_select :card_expires_on, :discard_day => true, :start_year => Date.today.year, :end_year => (Date.today.year+10), :add_month_numbers => true %>
 	<% else %>
+		<%= f.hidden_field :express_token %>
+	  <p>Name: <%=h @order.first_name %> <%=h @order.last_name %></p>
 		<p>To Do: Display order confirmation details.</p>
 	<% end %>
 	<%= f.submit 'Place Order' %>
